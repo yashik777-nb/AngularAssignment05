@@ -10,6 +10,7 @@ import { IssuesService } from '../issues.service';
 export class AddIssueComponent implements OnInit {
   severityData: string[] = ['Critical', 'Major', 'Minor'];
   statusData: string[] = ['Open', 'In Progress', 'Closed'];
+  submitted: boolean = false;
   issueDescriptionCount: number = 0;
 
   @ViewChild('f') addIssueForm: any = '';
@@ -35,6 +36,7 @@ export class AddIssueComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.issueService.newIssue.emit(data);
+        this.submitted = true;
         this.route.navigate(['']);
       });
   }

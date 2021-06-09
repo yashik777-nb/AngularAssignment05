@@ -15,10 +15,11 @@ export class AddIssueDeactivateGaurd
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    console.log('Triggered');
-    console.log(component.addIssueForm);
-    if (component.addIssueForm.dirty)
+    console.log(component.addIssueForm.dirty);
+    console.log(component.addIssueForm.submitted);
+    if (component.addIssueForm.dirty && !component.addIssueForm.submitted)
       return confirm('Are you sure you want to leave?');
     else return true;
+    // return false;
   }
 }
