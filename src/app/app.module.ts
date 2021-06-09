@@ -13,13 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IssueDetailComponent } from './issues/issue-detail/issue-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-const appRoutes: Routes = [
-  { path: '', component: AboutComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'issues', component: IssuesComponent },
-  { path: 'issues/:issueDesc', component: IssueDetailComponent },
-];
+import { AddIssueComponent } from './issues/add-issue/add-issue.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +23,9 @@ const appRoutes: Routes = [
     AboutComponent,
     IssueDetailComponent,
     PageNotFoundComponent,
+    AddIssueComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes),
-  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [IssuesService],
   bootstrap: [AppComponent],
 })

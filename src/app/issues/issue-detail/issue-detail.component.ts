@@ -12,7 +12,7 @@ export class IssueDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(
-      (params: Params) => (this.selectedIssue = params['issueDesc'])
+      (params: Params) => (this.selectedIssue = params['issueDescription'])
     );
   }
 }
