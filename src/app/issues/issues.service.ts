@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Issue } from '../issue.modal';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class IssuesService {
+  newIssue = new EventEmitter<Issue>();
   private issuesURL = 'http://localhost:3001/issues';
   private httpOptions = {
     headers: new HttpHeaders({

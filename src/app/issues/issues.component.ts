@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Issue } from '../issue.modal';
 import { IssuesService } from './issues.service';
 
@@ -9,7 +9,6 @@ import { IssuesService } from './issues.service';
 })
 export class IssuesComponent implements OnInit {
   Issue = new Issue('', '', '', '');
-  @Output() emitIssue = new EventEmitter<Issue>();
 
   issueDescription: string;
   issueSeverity: string;
@@ -18,7 +17,7 @@ export class IssuesComponent implements OnInit {
   statusData: string[] = ['Open', 'In Progress', 'Closed'];
   issues!: Issue[];
 
-  constructor(private _issuesService: IssuesService) {
+  constructor(private issuesService: IssuesService) {
     this.issueDescription = '';
     this.issueSeverity = '';
     this.issueStatus = '';
@@ -26,28 +25,31 @@ export class IssuesComponent implements OnInit {
 
   ngOnInit() {
     this.getIssues();
+    this.issuesService.newIssue.subscribe((data: Issue) =>
+      this.issues.push(data)
+    );
   }
 
   getIssues(): void {
-    this._issuesService.getIssues().subscribe(
+    this.issuesService.getIssues().subscribe(
       (issues: any) => (this.issues = issues),
       (err) => console.log(err)
     );
   }
 
-  onFormSubmit(): void {
-    const issue = new Issue(
-      '',
-      this.issueDescription,
-      this.issueSeverity,
-      this.issueStatus
-    );
-    this._issuesService.addIssue(issue).subscribe(
-      (data: any) => {
-        this.getIssues();
-        this.emitIssue.emit(data);
-      },
-      (err) => console.log(err)
-    );
-  }
+  // onFormSubmit(): void {
+  //   const issue = new Issue(
+  //     '',
+  //     this.issueDescription,
+  //     this.issueSeverity,
+  //     this.issueStatus
+  //   );
+  //   this._issuesService.addIssue(issue).subscribe(
+  //     (data: any) => {
+  //       this.getIssues();
+  //       this.emitIssue.emit(data);
+  //     },
+  //     (err) => console.log(err)
+  //   );
+  // }
 }

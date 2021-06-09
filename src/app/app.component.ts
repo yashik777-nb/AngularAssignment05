@@ -7,13 +7,4 @@ import { Issue } from './issue.modal';
 })
 export class AppComponent {
   applicationName: string = 'Online Shopping App';
-  appIssue: Issue;
-
-  constructor() {
-    this.appIssue = new Issue('', '', '', '');
-  }
-
-  newIssueEmitted(issueData: Issue) {
-    this.appIssue = issueData;
-  }
 }

@@ -29,12 +29,6 @@
       "issueDescription": "Issue Five",
       "issueSeverity": "Major",
       "issueStatus": "In Progress"
-    },
-    {
-      "id": "f95b4096-2ddb-4320-b35b-a79fa773bf7c",
-      "issueDescription": "qwqw",
-      "issueSeverity": "Major",
-      "issueStatus": "Open"
     }
   ]
 }
