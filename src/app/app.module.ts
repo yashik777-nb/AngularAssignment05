@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IssueDetailComponent } from './issues/issue-detail/issue-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: AboutComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     IssueAddedComponent,
     AboutComponent,
     IssueDetailComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
